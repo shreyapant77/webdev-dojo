@@ -1,0 +1,1 @@
+# same as random quote generator 
