@@ -40,36 +40,24 @@ function enterTask(){
         text:inputElementAccess.value,
         completed:false
     });
-    output="";
-    for(let i=0;i<task.length;i++){
-        let val="not complete ❌";
-        if(task[i].completed==true){
-            val="task completed ✅"
-        }
-        output+="Task Name: "+task[i].text+" Task Status"+val +"\n";
-    }
-    paraAccess.innerText=output;
+    renderTask();
     
 }
 
 
 function delTask(){
     task.splice(Number(delIndexAccess.value),1);
-    output="";
-    for(let i=0;i<task.length;i++){
-        let val="not complete ❌";
-        if(task[i].completed==true){
-            val="task completed ✅"
-        }
-        output+="Task Name: "+task[i].text+" Task Status"+val +"\n";
-    }
-    paraAccess.innerText=output;
+    renderTask();
 
 }
 
 function toggleTask(){
     let p=Number(toggleIndexAccess.value);
     task[p].completed=true;
+    renderTask();
+}
+
+function renderTask(){
     output="";
     for(let i=0;i<task.length;i++){
         let val="not complete ❌";
@@ -79,5 +67,4 @@ function toggleTask(){
         output+="Task Name: "+task[i].text+" Task Status"+val +"\n";
     }
     paraAccess.innerText=output;
-
 }
