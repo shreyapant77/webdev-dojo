@@ -65,3 +65,23 @@ Render Notes
 
 <p class="para"></p>
 ```
+
+### 3. Delete Note
+
+Remove a note using its index.
+
+```js
+notes.splice(index,1);
+```
+
+---
+
+### 4. Edit Note
+
+Replace an existing note.
+
+```js
+notes[index] = newText;
+```
+
+---
