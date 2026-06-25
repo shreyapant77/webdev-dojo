@@ -3,8 +3,11 @@ scoreAccess=document.querySelector(".score");
 submitBtn=document.querySelector(".btn1");
 renderBtn=document.querySelector(".btn2");
 paraAccess=document.querySelector(".para");
+sortBtnAccess=document.querySelector(".sortBtn");
+
 
 submitBtn.addEventListener("click",enterPlayer);
+sortBtnAccess.addEventListener("click",sortLeaderBoard);
 renderBtn.addEventListener("click",showBoard);
 
 let players=[];
@@ -27,4 +30,12 @@ function showBoard(){
         output+=players[i].name+" -"+players[i].score+"\n";
     }
     paraAccess.innerText=output;
+}
+
+
+function sortLeaderBoard(){
+    players.sort((a,b)=>{
+        return b.score-a.score;
+    });
+    showBoard();
 }
