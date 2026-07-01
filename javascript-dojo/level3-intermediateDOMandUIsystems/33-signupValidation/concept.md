@@ -119,3 +119,59 @@ or
 ```
 ✅ User Registered.
 ```
+
+
+# Project 34 - Multi-Step Form
+
+## Feature 2 - Dynamic Form UI
+
+### Task
+
+Display the correct form step by changing:
+
+* Heading
+* Input placeholder
+
+based on the current step.
+
+Return to Step 1 after completing the form.
+
+---
+
+## Suggested HTML
+
+```html
+<h2 class="title"></h2>
+
+<input class="inpt1">
+
+<button class="btn1">Next</button>
+
+<p class="para"></p>
+```
+
+---
+
+## New Concept
+
+Update existing DOM elements instead of creating new ones.
+
+Example:
+
+```javascript
+title.innerText = "...";
+
+input.placeholder = "...";
+```
+
+Render the UI based on the application's current state.
+
+---
+
+## Useful JavaScript
+
+```javascript
+element.innerText
+
+element.placeholder
+```
