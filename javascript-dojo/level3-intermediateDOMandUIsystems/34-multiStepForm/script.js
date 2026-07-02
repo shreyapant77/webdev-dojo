@@ -18,19 +18,42 @@ let val=0;
 //2 means password
 //3 renderUser
 function pageNext(){
+    let lock=false;
    if(val==0){
-    currentUser.name=inputAccess.value;
+    if(inputAccess.value.length<3){
+        paraAccess.innerText="name has to be of atleast 3 characters ❌"
+        lock=true;
+    }else{
+        currentUser.name=inputAccess.value;
+        paraAccess.innerText = "";
+    }
+    
   
    }
    if(val==1){
-     currentUser.email=inputAccess.value;
+    if(!inputAccess.value.includes("@")){
+        paraAccess.innerText="email must contain @ sign"
+        lock=true;
+    }else{
+        currentUser.email=inputAccess.value;
+        paraAccess.innerText = "";
+    }
+     
   
    }
    if(val==2){
-      currentUser.password=inputAccess.value;
+    if(inputAccess.value.length<8){
+        paraAccess.innerText="password needs to be of 8 characters atleast"
+        lock=true;
+    }else{
+        currentUser.password=inputAccess.value;
+        paraAccess.innerText = "";
+        
+    }
+      
      
    }
-   if(val<=1){
+   if(val<=1 && lock==false){
         val++;
    }
    renderPage();
@@ -45,6 +68,7 @@ function pagePrev(){
 
 function renderPage(){
      if(val==0){
+        
         formStepAccess.innerText="Step 1:Enter your Name ";
         inputAccess.type="text";
         inputAccess.placeholder="your name here";
@@ -69,6 +93,17 @@ function renderPage(){
 
 }
 function submitForm(){
+    let lock=false;
+     if(inputAccess.value.length<8){
+        paraAccess.innerText="password needs to be of 8 characters atleast"
+        lock=true;
+    }if(lock==false){
+         currentUser.password=inputAccess.value;
+        paraAccess.innerText = "";
+    }
+       
+        
+    
     users.push(currentUser);
     currentUser={};
     renderUser();

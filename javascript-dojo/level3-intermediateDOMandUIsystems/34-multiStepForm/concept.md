@@ -159,3 +159,108 @@ val++
 
 val--
 ```
+
+
+# Project 34 - Multi-Step Form
+
+## Feature 4 - Step Validation
+
+### Task
+
+Validate each step before allowing the user to move to the next step.
+
+Rules:
+
+* Name → minimum 3 characters
+* Email → must contain `@`
+* Password → minimum 8 characters
+
+If validation fails:
+
+* Stay on the current step.
+* Display an error message.
+
+---
+
+## New Concepts
+
+* Input validation
+* Prevent navigation on invalid input
+* Application state vs UI state
+
+---
+
+## Important Learning
+
+Typing in an input **does not automatically update** your JavaScript object.
+
+```text
+Input Field
+     ≠
+JavaScript Object
+```
+
+The object updates only when your code runs, for example:
+
+```javascript
+currentUser.password = inputAccess.value;
+```
+
+If this line is inside the **Next** button, clicking **Submit** directly will not save the password.
+
+Possible solutions:
+
+* Save the value when **Next** is clicked.
+* Or save it again inside the **Submit** button.
+
+---
+
+## Useful JavaScript
+
+```javascript
+.length
+.includes()
+return
+```
+
+
+# 💡 Important Learning - Saving Form State
+
+Typing into an input **does not automatically save** the value into your JavaScript object.
+
+The value is saved **only when the code that copies it runs**.
+
+Example:
+
+```javascript
+currentUser.password = inputAccess.value;
+```
+
+If this line is inside the **Next** button handler, then:
+
+```
+Type Password
+↓
+
+Next clicked
+↓
+
+Password saved
+```
+
+If the user clicks **Submit** directly, the password is **never saved**, because the code inside the **Next** button never executes.
+
+Two possible solutions:
+
+1. Click **Next** before **Submit** so the password gets saved.
+2. Save the password inside the **Submit** button as well.
+
+### Key Concept
+
+```
+Typing in Input
+        ≠
+Saving into Object
+```
+
+Your JavaScript decides **when** the application's state is updated.
