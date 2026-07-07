@@ -1,6 +1,8 @@
-qAccess=document.querySelector(".q");
-ansAccess=document.querySelector(".ans");
-btnAccess=document.querySelector(".btn");
+// qAccess=document.querySelector(".q");
+// ansAccess=document.querySelector(".ans");
+// btnAccess=document.querySelector(".btn");
+
+containerAccess=document.querySelector(".container");
 
 // let store={
 //     question:"what is javascript?",
@@ -8,7 +10,7 @@ btnAccess=document.querySelector(".btn");
 //     open:false
 // };
 
-btnAccess.addEventListener("click",toggleAnswer);
+// btnAccess.addEventListener("click",toggleAnswer);
 
 // qAccess.innerText=store.question;
 // function toggleAnswer(){
@@ -52,17 +54,41 @@ let faqs=[
 
 
 
-function toggleAnswer(){
-    let output=""
-    for(let i=0;i<faqs.length;i++){
-        if(faqs[i].open==true){
-             output+=`<p>${faqs[i].question}</p>
-            <p>${faqs[i].answer}</p>`;
-            faqs.open=false;
-        }else{
-            output+=`<p>${faqs[i].question}</p>`;
-            faqs.open=false;
-        }
+// function toggleAnswer(){
+//     let output="";
+//     for(let i=0;i<faqs.length;i++){
+//         if(faqs[i].open==true){
+//              output+=`<p>${faqs[i].question}</p>
+//             <p>${faqs[i].answer}</p>`;
+//             faqs.open=false;
+//         }else{
+//             output+=`<p>${faqs[i].question}</p>`;
+//             faqs.open=false;
+//         }
        
+//     }
+//     containerAccess.innerHTML=output;
+// }
+
+
+function initialRender(){
+    let output="";
+    for(let i=0;i<faqs.length;i++){
+        output+=`<button onclick="toggleFAQ(${i})">${faqs[i].question}</button>`;  
+        if(faqs[i].open==true){
+            output+=`<p>${faqs[i].answer}</p>`;
+        }
     }
+    containerAccess.innerHTML=output;
+}
+initialRender();
+
+function toggleFAQ(index){
+    faqs[index].open = !faqs[index].open;
+    for(let i=0;i<faqs.length;i++){
+        if(i!=index){
+            faqs[i].open=false;
+        }
+    }
+    initialRender();
 }
