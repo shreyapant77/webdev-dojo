@@ -1,0 +1,14 @@
+.overlay{
+    width:500px;
+    height:500px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal{
+    width: 250px;
+    height: 250px;
+    background-color: yellow;
+}
