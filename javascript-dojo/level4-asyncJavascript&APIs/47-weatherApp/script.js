@@ -4,7 +4,7 @@ msgAccess=document.querySelector(".msg");
 humidityAccess=document.querySelector(".humidity");
 tempAccess=document.querySelector(".temperature");
 windAccess=document.querySelector(".wind");
-conditionAccess=document.querySelector(".condition");
+weatherCodeAccess=document.querySelector(".code");
 
 btnAccess.addEventListener("click",getWeather);
 
@@ -32,6 +32,23 @@ async function getWeather(){
 
         console.log(latitude);
         console.log(longitude);
+
+        let weatherUrl =`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code`;
+        let weatherResponse=await fetch(weatherUrl);
+        if(!weatherResponse.ok){
+            throw new Error("failed to fetch weather data error 2");
+        }
+        let weatherData=await weatherResponse.json();
+
+        // console.log(weatherData);
+
+        humidityAccess.innerText="humidity:"+weatherData.current.relative_humidity_2m;
+        tempAccess.innerText="temperature:"+weatherData.current.temperature_2m;
+        windAccess.innerText="wind speed:"+weatherData.current.wind_speed_10m;
+        weatherCodeAccess.innerText="weather code:"+weatherData.current.weather_code;
+
+
+
 
 
     }
