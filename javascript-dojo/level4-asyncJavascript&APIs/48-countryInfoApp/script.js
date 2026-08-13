@@ -24,7 +24,19 @@ async function getCountry(){
         console.log(data.languages[0].name);
         cname.innerText=data.name;
         cpopulation.innerText=data.population;
-        clang.innerText=data.languages[0].name;
+
+
+        // clang.innerText=data.languages[0].name;
+        //array.map(function(item) {
+            // return something;
+        // });
+        let languages=data.languages.map(function(x){
+            return x.name;
+        });
+
+        clang.innerText=languages;
+
+
         ccurr.innerText=data.currencies[0].name;
         ccapital.innerText=data.capital;
 
