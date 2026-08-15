@@ -6,9 +6,12 @@ sAccess=document.querySelector(".summary");
 gAcess=document.querySelector(".genres");
 imgAccess=document.querySelector(".poster");
 
+msgAccess=document.querySelector(".msg");
+
 btnAccess.addEventListener("click",getMovie);
 
 async function getMovie(){
+    msgAccess.innerText="";
     let movie=inptAccess.value.trim();
     let url=`https://api.tvmaze.com/singlesearch/shows?q=${encodeURIComponent(movie)}`;
     try{
@@ -27,13 +30,21 @@ async function getMovie(){
         });
         gAcess.innerText=y;
 
-        imgAccess.src=data.image.medium;
+        // imgAccess.src=data.image.medium;
+        
+        //error handling in API in case data is missing
+        if(data.image!==null){
+            imgAccess.src=data.image.medium;
+        }else{
+            imgAccess.alt="no image available for this movie"
+        }
 
 
 
     }
     catch(error){
         console.log(error);
+        msgAccess.innerText="movie not found";
     }
 
 }
